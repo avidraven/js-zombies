@@ -128,7 +128,7 @@ class Player {
  */
 
  checkPack(){
-  console.log(this.getPack().join());
+  console.log(this.getPack().join(", "));
  }
 
 /**
@@ -184,7 +184,7 @@ class Player {
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
  discardItem(item){
-  if (this.getPack().indexOf(item) !== -1){
+  if (this.getPack().indexOf(item) > -1){
     this.getPack().splice(this.getPack().indexOf(item),1);
     console.log(this.name + ' discarded ' + item + '.');
     return true;
@@ -214,7 +214,7 @@ class Player {
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
  equip(itemToEquip){
-  if (this.getPack().indexOf(itemToEquip) !== -1){
+  if (this.getPack().indexOf(itemToEquip) > -1){
     if (this.equipped){
       this.getPack().splice(this.getPack().indexOf(itemToEquip),1,this.equipped);
       this.equipped = itemToEquip;
@@ -245,7 +245,7 @@ class Player {
  * @param {Food} itemToEat  The food item to eat.
  */
  eat(itemToEat){
-  if (this.getPack().indexOf(itemToEat) !== -1 && (itemToEat instanceof Food)){
+  if (this.getPack().indexOf(itemToEat) > -1 && (itemToEat instanceof Food)){
     this.getPack().splice(this.getPack().indexOf(itemToEat),1);
     if (this.health + itemToEat.energy <= this.getMaxHealth()){
       this.health = this.health + itemToEat.energy;
