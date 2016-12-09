@@ -213,6 +213,7 @@ class Player {
  * @name equip
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
+ //use takeItem
  equip(itemToEquip){
   if (this.getPack().indexOf(itemToEquip) > -1){
     if (this.equipped){
