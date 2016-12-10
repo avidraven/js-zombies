@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 /**
  * Class => Item(name)
  * -----------------------------
@@ -7,7 +8,11 @@
  * @param {string} name     The item's name.
  * @property {string} name
  */
-
+class Item{
+  constructor(name){
+    this.name = name;
+  }
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -15,7 +20,7 @@
  * Creates a weapon item.
  * Weapon items can be equipped for use in battle.
  *
- * The Weapon class constructor will call 
+ * The Weapon class constructor will call
  *   the super class (Item) constructor
  *   while passing in the 1 Item constructor param
  *
@@ -30,8 +35,12 @@
  * Weapon Extends Item Class
  * -----------------------------
  */
-
-
+class Weapon extends Item{
+  constructor(name, damage){
+    super(name);
+    this.damage = damage;
+  }
+}
 
 /**
  * Class => Food(name, energy)
@@ -39,7 +48,7 @@
  * Creates a food item.
  * Food items give energy, restoring health to the player.
  *
- * The Food class constructor will call 
+ * The Food class constructor will call
  *   the super class (Item) constructor
  *   while passing in the 1 Item constructor param
  *
@@ -54,8 +63,12 @@
  * Food Extends Item Class
  * -----------------------------
  */
-
-
+class Food extends Item{
+  constructor(name, energy){
+    super(name);
+    this.energy = energy;
+  }
+}
 
 /**
  * Class => Player(name, health, strength, speed)
@@ -78,6 +91,25 @@
  * @property {method} getPack              Returns private variable `pack`.
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
+class Player{
+  constructor(name, health, strength, speed){
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
+    this.equipped = false;
+    this._pack = [];
+    this._maxHealth = health;
+  }
+
+  getPack(){
+    return this._pack;
+  }
+
+  getMaxHealth(){
+
+  }
 
 
 /**
@@ -91,7 +123,6 @@
  *
  * @name checkPack
  */
-
 
 /**
  * Player Class Method => takeItem(item)
@@ -208,7 +239,14 @@
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+}
 
+module.exports = {
+  item: Item,
+  weapon: Weapon,
+  food: Food,
+  player: Player,
+};
 /**
  * Class => Zombie(health, strength, speed)
  * -----------------------------
@@ -231,7 +269,7 @@
  * -----------------------------
  * Creates a fast zombie.
  *
- * The FastZombie class constructor will call 
+ * The FastZombie class constructor will call
  *   the super class (Zombie) constructor
  *   while passing in the 3 Zombie constructor params
  *
@@ -254,7 +292,7 @@
  * -----------------------------
  * Creates a strong zombie.
  *
- * The StrongZombie class constructor will call 
+ * The StrongZombie class constructor will call
  *   the super class (Zombie) constructor
  *   while passing in the 3 Zombie constructor params
  *
@@ -277,7 +315,7 @@
  * -----------------------------
  * Creates a ranged zombie.
  *
- * The RangedZombie class constructor will call 
+ * The RangedZombie class constructor will call
  *   the super class (Zombie) constructor
  *   while passing in the 3 Zombie constructor params
  *
@@ -300,7 +338,7 @@
  * -----------------------------
  * Creates an exploding zombie.
  *
- * The ExplodingZombie class constructor will call 
+ * The ExplodingZombie class constructor will call
  *   the super class (Zombie) constructor
  *   while passing in the 3 Zombie constructor params
  *
